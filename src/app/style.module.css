@@ -2,6 +2,7 @@
     transition: transform 0.8s;
     transform-style: preserve-3d;
     perspective: 10000px;
+    opacity: 0.8;
     & .cardFront {
         animation: animateCard 6s linear alternate infinite;
         -webkit-backface-visibility: hidden; /* Safari */
