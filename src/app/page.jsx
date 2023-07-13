@@ -12,12 +12,13 @@ const links = [
     {
         title: 'why?',
         url: '/features',
-        description: 'get started by Create your own personalized card',
+        description:
+            "why to use our service?, what we provide and it's features",
     },
     {
         title: 'about',
         url: '/about',
-        description: 'get started by Create your own personalized card',
+        description: 'about SmartBizCard',
     },
     {
         title: 'download app',
