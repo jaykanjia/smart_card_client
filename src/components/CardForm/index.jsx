@@ -3,14 +3,13 @@ import React from "react";
 import Image from "next/image";
 import styles from "./register.module.css";
 
-export default function Register() {
+export default function Cardform() {
     return (
         <main className={styles.logincontainer}>
             <div className={styles.container}>
                 <div className={styles.wb}>WELCOME !</div>
                 <div className={styles.title}>Create a Card</div>
-                
-                <div className="grid md:grid-cols-2 gap-8 w-full  ">
+                <div className="grid md:grid-cols-2 gap-8 items-center w-full">
                     <div className={styles.fieldcon}>
                         <span className={styles.details}>Name</span>
                         <input
@@ -98,41 +97,38 @@ export default function Register() {
                             title="Please enter a valid URL starting with http:// or https://"
                         />
                     </div>
-                   
-                    <div className={styles.fieldcon}>
-                        <span className={styles.details}>Profile Image</span>
-                        <input
-                            className={styles.inputstyle}
-                            type="file"
-                            aria-label="profile image"
-                            accept=".png, .jpg, .jpeg"
-                            required
-                        />
+                    <div className="md:col-span-2 flex flex-col md:flex-row gap-8">
+                        <div className={styles.fieldcon}>
+                            <span className={styles.details}>Profile Image</span>
+                            <input
+                                className={styles.inputstyle}
+                                type="file"
+                                aria-label="profile image"
+                                accept=".png, .jpg, .jpeg"
+                                required
+                            />
+                        </div>
+                        <div className={styles.fieldcon}>
+                            <span className={styles.details}>Banner Image</span>
+                            <input
+                                className={styles.inputstyle}
+                                type="file"
+                                aria-label="banner image"
+                                accept=".png, .jpg, .jpeg"
+                                required
+                            />
+                        </div>
                     </div>
-                    <div className={styles.fieldcon}>
-                        <span className={styles.details}>Banner Image</span>
-                        <input
-                            className={styles.inputstyle}
-                            type="file"
-                            aria-label="banner image"
-                            accept=".png, .jpg, .jpeg"
-                            required
-                        />
-                    </div>
-                
-
-
                 </div>
-
                 <div className="m-[30px_0px] flex gap-3">
                     <button className={styles.btn1}>Cancel</button>
                     <button className={styles.btn}>Login</button>
                 </div>
-                <div className="flex flex-row gap-[5px]">
+                {/* <div className="flex flex-row gap-[5px]">
                     <p className="text-[#aabfd0]">Not registered yet?</p>
                     <p className={styles.reg}>Register</p>
-                </div>
-            </div>
+                </div> */}
+            </div>  
         </main>
     );
 }

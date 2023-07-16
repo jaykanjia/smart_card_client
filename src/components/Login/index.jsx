@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import styles from "./challenge.module.css";
 
-export default function Challenge() {
+export default function Login() {
   return (
     <main className={styles.logincontainer}>
       <div className={styles.container}>
