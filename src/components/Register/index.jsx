@@ -1,28 +1,28 @@
-'use client';
 import React from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 
-const Login = () => {
-    const router = useRouter();
-
-    const handleClik = () => {
-        router.push('/myprofile');
-    };
-
+const Register = () => {
     return (
         <>
             <div className="flex flex-col gap-8">
                 <div className="flex flex-col gap-2">
                     <div className={`text-center font-semibold text-gray-500`}>
-                        WELCOME BACK
+                        WELCOME
                     </div>
                     <div
                         className={`text-2xl font-semibold text-center text-white`}
                     >
-                        Login to Your Account
+                        Create Your Account for free
                     </div>
+                </div>
+                <div className={`flex flex-col gap-2`}>
+                    <span className={`text-white`}>Name</span>
+                    <input
+                        className={`rounded-md py-2 px-4 text-gray-700`}
+                        type="text"
+                        placeholder="Enter your name"
+                        required
+                    />
                 </div>
                 <div className={`flex flex-col gap-2`}>
                     <span className={`text-white`}>Email</span>
@@ -34,12 +34,7 @@ const Login = () => {
                     />
                 </div>
                 <div className={`flex flex-col gap-2`}>
-                    <div className={`flex justify-between items-center`}>
-                        <span className={`text-white`}>Password</span>
-                        <button className={`text-sm text-gray-400`}>
-                            Forgot password?
-                        </button>
-                    </div>
+                    <span className={`text-white`}>Password</span>
                     <input
                         className={`rounded-md py-2 px-4 text-gray-700`}
                         type="password"
@@ -47,20 +42,25 @@ const Login = () => {
                         required
                     />
                 </div>
-
+                <div className={`flex flex-col gap-2`}>
+                    <span className={`text-white`}>Confirm Password</span>
+                    <input
+                        className={`rounded-md py-2 px-4 text-gray-700`}
+                        type="password"
+                        placeholder="Confirm your password"
+                        required
+                    />
+                </div>
                 <button
                     className={`bg-primary bg-opacity-80 text-white w-full rounded-md px-4 py-2 hover:bg-opacity-100`}
-                    onClick={handleClik}
                 >
-                    Login
+                    Register
                 </button>
 
                 <div className="flex gap-2">
-                    <p className="text-gray-400">Not registered yet?</p>
-                    <Link href="/register">
-                        <p className={`underline underline-offset-2`}>
-                            Register
-                        </p>
+                    <p className="text-gray-400">Already registered?</p>
+                    <Link href="/login">
+                        <p className={`underline underline-offset-2`}>Login</p>
                     </Link>
                 </div>
             </div>
@@ -68,4 +68,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default Register;
