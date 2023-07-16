@@ -7,6 +7,13 @@ module.exports = {
     ],
     theme: {
         extend: {
+            colors: {
+                primary: '#0560ff',
+            },
+            transitionProperty: {
+                height: 'height',
+                spacing: 'margin, padding',
+            },
             backgroundImage: {
                 'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
                 'gradient-conic':
