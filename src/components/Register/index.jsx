@@ -1,9 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
 
-const Register = () => {
+const Register = ({ onSubmit, nameRef, emailRef, passwordRef }) => {
     return (
-        <>
+        <form>
             <div className="flex flex-col gap-8">
                 <div className="flex flex-col gap-2">
                     <div className={`text-center font-semibold text-gray-500`}>
@@ -18,6 +18,7 @@ const Register = () => {
                 <div className={`flex flex-col gap-2`}>
                     <span className={`text-white`}>Name</span>
                     <input
+                        ref={nameRef}
                         className={`rounded-md py-2 px-4 text-gray-700`}
                         type="text"
                         placeholder="Enter your name"
@@ -27,6 +28,7 @@ const Register = () => {
                 <div className={`flex flex-col gap-2`}>
                     <span className={`text-white`}>Email</span>
                     <input
+                        ref={emailRef}
                         className={`rounded-md py-2 px-4 text-gray-700`}
                         type="email"
                         placeholder="Enter your email"
@@ -36,6 +38,7 @@ const Register = () => {
                 <div className={`flex flex-col gap-2`}>
                     <span className={`text-white`}>Password</span>
                     <input
+                        ref={passwordRef}
                         className={`rounded-md py-2 px-4 text-gray-700`}
                         type="password"
                         placeholder="Enter your password"
@@ -53,6 +56,7 @@ const Register = () => {
                 </div>
                 <button
                     className={`bg-primary bg-opacity-80 text-white w-full rounded-md px-4 py-2 hover:bg-opacity-100`}
+                    onClick={(e) => onSubmit(e)}
                 >
                     Register
                 </button>
@@ -64,7 +68,7 @@ const Register = () => {
                     </Link>
                 </div>
             </div>
-        </>
+        </form>
     );
 };
 

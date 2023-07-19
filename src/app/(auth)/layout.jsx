@@ -1,6 +1,15 @@
-import React from 'react';
+'use client';
+import React, { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
 const layout = ({ children }) => {
+    const router = useRouter();
+
+    useEffect(() => {
+        const token = sessionStorage.getItem('AUTH_TOKEN');
+        if (token) router.push('/dashboard');
+    }, []);
+
     return (
         <main
             className={`w-full min-h-[100vh] flex justify-center items-center bg-[#323f4b] sm:bg-[#222222]`}

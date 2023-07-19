@@ -2,15 +2,8 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 
-const Login = () => {
-    const router = useRouter();
-
-    const handleClik = () => {
-        router.push('/myprofile');
-    };
-
+const Login = ({ onSubmit, emailRef, passwordRef }) => {
     return (
         <>
             <div className="flex flex-col gap-8">
@@ -27,6 +20,7 @@ const Login = () => {
                 <div className={`flex flex-col gap-2`}>
                     <span className={`text-white`}>Email</span>
                     <input
+                        ref={emailRef}
                         className={`rounded-md py-2 px-4 text-gray-700`}
                         type="email"
                         placeholder="Enter your email"
@@ -41,6 +35,7 @@ const Login = () => {
                         </button>
                     </div>
                     <input
+                        ref={passwordRef}
                         className={`rounded-md py-2 px-4 text-gray-700`}
                         type="password"
                         placeholder="Enter your password"
@@ -50,7 +45,7 @@ const Login = () => {
 
                 <button
                     className={`bg-primary bg-opacity-80 text-white w-full rounded-md px-4 py-2 hover:bg-opacity-100`}
-                    onClick={handleClik}
+                    onClick={(e) => onSubmit(e)}
                 >
                     Login
                 </button>
