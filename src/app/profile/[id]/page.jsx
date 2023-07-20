@@ -1,6 +1,6 @@
 'use client';
 import Template from '@/components/Template';
-import React from 'react';
+import React, { useState } from 'react';
 
 const page = ({ params }) => {
     return (
