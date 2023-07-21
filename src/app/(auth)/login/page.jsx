@@ -16,7 +16,8 @@ const page = () => {
                 email: emailRef.current.value,
                 password: passwordRef.current.value,
             });
-            sessionStorage.setItem('AUTH_TOKEN', response.data.token);
+            console.log(response.data);
+            sessionStorage.setItem('AUTH_TOKEN', response.data.authToken);
             window.alert('Login Successfull');
             router.push('/dashboard');
         } catch (error) {

@@ -9,10 +9,18 @@ module.exports = {
         extend: {
             colors: {
                 primary: '#0560ff',
-            },
-            transitionProperty: {
-                height: 'height',
-                spacing: 'margin, padding',
+                secondary: '',
+                black: '#000000',
+                white: '#ffffff',
+                dark: {
+                    500: '#323f4b',
+                    700: '#222222',
+                },
+                light: {
+                    300: '#ffffff',
+                    500: '#f0f0f0',
+                    700: '',
+                },
             },
             backgroundImage: {
                 'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
