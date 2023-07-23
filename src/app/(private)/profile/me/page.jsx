@@ -3,6 +3,11 @@ import React, { useState, useEffect } from 'react';
 import QRCode from 'react-qr-code';
 import Template from '@/components/Template';
 import AxiosInstance from '@/AxiosInstance';
+import { useRouter } from 'next/navigation';
+import FloatingBtn from '@/components/FloatingBtn';
+import QRIcon from '@/public/icons/qr.svg';
+import ShareIcon from '@/public/icons/share.svg';
+import Loading from '@/components/Loading';
 
 const QRCodeGenerator = ({ data }) => {
     return (
@@ -18,12 +23,17 @@ const page = () => {
     const [loading, setLoading] = useState(true);
     // const [qrData, setQrData] = useState('Hello, World!');
 
+    const router = useRouter();
+
     const handleQrContainer = () => {
         return setShowQrCode(!showQrCode);
     };
 
     const handleShare = () => {
-        return;
+        const base = 'http://localhost:3000';
+        const link = base + `/profile/${userData.userId}`;
+        navigator.clipboard.writeText(link);
+        window.alert('Profile Linked Copied...');
     };
 
     useEffect(async () => {
@@ -42,11 +52,11 @@ const page = () => {
     }, []);
 
     if (loading) {
-        return <div>LOADING...</div>;
+        return <Loading />;
     }
 
     return (
-        <>
+        <div className="relative max-w-7xl mx-auto">
             {showQrCode && (
                 <div className="absolute z-50 max-h-[70%] aspect-square w-full left-0 bottom-0 px-[5%]">
                     <div className="bg-white rounded-t-3xl w-full h-full grid place-items-center">
@@ -63,22 +73,38 @@ const page = () => {
                     </div>
                 </div>
             )}
-            <div className="absolute bottom-8 right-4 sm:right-10 flex flex-col gap-4">
-                <div
-                    className="bg-dark-500 w-12 h-12 grid place-items-center rounded-full"
-                    onClick={handleShare}
-                >
-                    S
-                </div>
-                <div
-                    className="bg-dark-500 w-12 h-12 grid place-items-center rounded-full"
-                    onClick={handleQrContainer}
-                >
-                    QR
-                </div>
-            </div>
             <Template data={userData} />
-        </>
+            <div className="absolute bottom-8 right-4 sm:right-10 flex flex-col gap-4">
+                <FloatingBtn onClick={(e) => handleShare(e)}>
+                    <ShareIcon />
+                </FloatingBtn>
+                <FloatingBtn onClick={handleQrContainer}>
+                    <QRIcon />
+                </FloatingBtn>
+            </div>
+            <div className="absolute top-8 left-4 sm:right-10 flex flex-col gap-4">
+                <FloatingBtn
+                    onClick={() => {
+                        router.back();
+                    }}
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={1.5}
+                        stroke="currentColor"
+                        className="w-6 h-6"
+                    >
+                        <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M19.5 12h-15m0 0l6.75 6.75M4.5 12l6.75-6.75"
+                        />
+                    </svg>
+                </FloatingBtn>
+            </div>
+        </div>
     );
 };
 
