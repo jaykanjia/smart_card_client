@@ -2,15 +2,17 @@
 import React from 'react';
 import Image from 'next/image';
 import ImagePicker from '../ImagePicker';
+import { useRouter } from 'next/navigation';
 import styles from './register.module.css';
 
 const ProfileForm = () => {
+    const router = useRouter();
     return (
         <main
-            className={`w-full md:py-8 min-h-screen flex justify-center items-center bg-light-500 dark:bg-dark-700`}
+            className={`w-full md:py-8 min-h-screen flex justify-center items-center bg-light-300 dark:bg-dark-700`}
         >
             <div
-                className={`max-w-screen-md w-full sm:bg-dark-500 bg-dark-700 p-8 md:rounded-xl`}
+                className={`max-w-screen-md w-full bg-light-500 sm:dark:bg-dark-500 dark:bg-dark-700 p-8 md:rounded-xl`}
             >
                 <div
                     className={`flex justify-center text-gray-500 font-semibold`}
@@ -18,7 +20,7 @@ const ProfileForm = () => {
                     WELCOME !
                 </div>
                 <div
-                    className={`text-2xl font-semibold text-white flex justify-center py-4`}
+                    className={`text-2xl font-semibold flex justify-center py-4`}
                 >
                     Create Your Profile
                 </div>
@@ -58,13 +60,10 @@ const ProfileForm = () => {
                         <span className={styles.details}>Contact Number</span>
                         <input
                             className={styles.inputbox}
-                            type="number"
-                            placeholder="Enter your company contact number"
+                            type="text"
+                            placeholder="Enter your contact number"
+                            pattern="[0-9]{10}$"
                             required
-                            style={{
-                                appearance: 'textfield',
-                                '-moz-appearance': 'textfield',
-                            }}
                         />
                     </div>
                     <div className={styles.inputContainer}>
@@ -138,6 +137,7 @@ const ProfileForm = () => {
                 <div className="m-[30px_0px] flex gap-3">
                     <button
                         className={`bg-red-500 text-white w-full hover:bg-red-400 hover:bg-opacity-70 rounded-md p-2`}
+                        onClick={() => router.back()}
                     >
                         Cancel
                     </button>
