@@ -34,6 +34,7 @@ const page = () => {
         const link = base + `/profile/${userData.userId}`;
         navigator.clipboard.writeText(link);
         window.alert('Profile Linked Copied...');
+        return;
     };
 
     useEffect(async () => {
@@ -83,11 +84,7 @@ const page = () => {
                 </FloatingBtn>
             </div>
             <div className="absolute top-8 left-4 sm:right-10 flex flex-col gap-4">
-                <FloatingBtn
-                    onClick={() => {
-                        router.back();
-                    }}
-                >
+                <FloatingBtn onClick={router.back}>
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"

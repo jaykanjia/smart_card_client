@@ -3,7 +3,7 @@
 }
 
 .details {
-    @apply text-white p-[5px_0px];
+    @apply p-[5px_0px];
 }
 
 .inputbox {
