@@ -10,11 +10,7 @@ const layout = ({ children }) => {
         if (!token) router.push('/login');
     });
 
-    return (
-        <div className="relative w-screen h-screen overflow-scroll">
-            {children}
-        </div>
-    );
+    return <div className="relative w-screen h-screen">{children}</div>;
 };
 
 export default layout;

@@ -1,0 +1,23 @@
+.inputContainer {
+    @apply flex flex-col;
+}
+
+.details {
+    @apply text-white p-[5px_0px];
+}
+
+.inputbox {
+    @apply h-10 rounded-md p-4 text-black w-full;
+}
+
+.fp {
+    @apply text-sm text-[#aba8a8];
+}
+
+.reg {
+    @apply decoration-solid underline underline-offset-2 decoration-white cursor-pointer;
+}
+
+.data {
+    @apply flex flex-row justify-between items-center;
+}

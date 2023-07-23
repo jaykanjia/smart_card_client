@@ -53,26 +53,25 @@ import Image from 'next/image';
 
 const Template = ({ data }) => {
     return (
-        <div className="max-w-7xl h-screen m-auto bg-light-500 dark:bg-dark-700 p-8 overflow-y-scroll overflow-x-hidden noScrollbar">
+        <div className="w-full h-screen m-auto bg-light-500 dark:bg-dark-700 p-8 overflow-y-scroll overflow-x-hidden noScrollbar">
             <div className="relative flex flex-col justify-end items-center md:items-start">
-                <div className="relative rounded-xl overflow-hidden">
+                <div className="relative rounded-xl overflow-hidden w-full aspect-[10/4] sm:aspect-[10/2]">
                     <Image
-                        src={data?.bannerImage || '/images/banner.png'}
+                        src={data?.bannerImage || '/images/banner.jpg'}
                         style={{ objectFit: 'cover' }}
-                        width={1280}
-                        height={200}
+                        fill
                     />
                 </div>
-                <div className="absolute w-[28%] sm:w-[15%] top-[40%] sm:top-[55%] rounded-full overflow-hidden bg-white border-2 border-solid border-white m-[0px_30px]">
+                <div className="absolute w-[28%] max-w-[150px] bottom-[-20%] rounded-full overflow-hidden  border-solid  sm:ml-8">
                     <Image
-                        src={data?.profileImage || '/images/photo.jpeg'}
+                        src={data?.profileImage || '/images/avatar.png'}
                         style={{ objectFit: 'cover' }}
                         width={300}
                         height={300}
                     />
                 </div>
             </div>
-            <div className="flex flex-col gap-8 mt-[75px]">
+            <div className="flex flex-col gap-8 mt-10 sm:mt-16">
                 <div className="flex flex-col sm:items-start items-center">
                     <p className="font-medium text-[24px]">{data?.name}</p>
                     <p className="text-sm font-light italic">
@@ -108,6 +107,7 @@ const Template = ({ data }) => {
                             <div className="flex gap-4 items-center rounded-xl">
                                 <div className="bg-light-300 dark:bg-dark-500 p-3 rounded-[20px]">
                                     <Image
+                                        className="invert dark:invert-0 opacity-40"
                                         src={item?.icon}
                                         height={30}
                                         width={30}
