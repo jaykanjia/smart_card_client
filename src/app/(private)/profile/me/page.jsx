@@ -30,7 +30,7 @@ const page = () => {
     };
 
     const handleShare = () => {
-        const base = 'http://localhost:3000';
+        const base = process.env.CLIENT_URL;
         const link = base + `/profile/${userData.userId}`;
         navigator.clipboard.writeText(link);
         window.alert('Profile Linked Copied...');
