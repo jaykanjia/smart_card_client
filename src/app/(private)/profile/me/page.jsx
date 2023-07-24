@@ -68,7 +68,7 @@ const page = () => {
                         <div>
                             {/* TODO: change url to dynamic */}
                             <QRCodeGenerator
-                                data={`http://localhost:3000/profile/${userData?.userId}`}
+                                data={`https://smart-card-client.vercel.app/profile/${userData?.userId}`}
                             />
                         </div>
                     </div>
