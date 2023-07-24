@@ -20,7 +20,7 @@ const Header2 = () => {
     };
 
     return (
-        <div className="z-10 sticky top-0 w-[90%] rounded-xl mx-auto flex flex-row md:flex-row-reverse items-center justify-between font-mono text-sm p-8 bg-light-300 dark:bg-black backdrop-blur-lg bg-opacity-30">
+        <div className="z-10 sticky top-0 w-[90%] rounded-xl mx-auto flex flex-row md:flex-row-reverse items-center justify-between font-mono text-sm p-4 sm:p-8 bg-light-300 dark:bg-black backdrop-blur-lg bg-opacity-30">
             <div className="z-20 flex justify-between w-full md:w-auto">
                 <Link
                     className="pointer-events-none flex items-baseline place-items-center gap-2 lg:pointer-events-auto"

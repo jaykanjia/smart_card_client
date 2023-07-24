@@ -11,6 +11,7 @@ const ImageContentSection = ({ image, title, description, reverse }) => {
             <div className="sm:w-1/2 w-full">
                 <div className="mx-auto relative aspect-[1/1] h-80 sm:h-96 rounded-3xl overflow-hidden">
                     <Image
+                        className="rounded-xl"
                         src={image}
                         fill
                         alt={`${title} image`}

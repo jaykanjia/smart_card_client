@@ -37,7 +37,7 @@ const page = () => {
         return <Loading />;
     }
     return (
-        <div className="max-w-screen-xl mx-auto bg-light-500 dark:bg-dark-700">
+        <div className="max-w-screen-xl mx-auto bg-light-500 dark:bg-dark-700 py-4">
             <Header2 />
             <main className="p-8 flex flex-col gap-8">
                 {data.map((item, index) => (
