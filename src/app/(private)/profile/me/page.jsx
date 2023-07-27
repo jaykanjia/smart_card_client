@@ -30,7 +30,7 @@ const page = () => {
     };
 
     const handleShare = () => {
-        const base = 'http://localhost:3000';
+        const base = 'https://smart-card-client.vercel.app';
         const link = base + `/profile/${userData.userId}`;
         navigator.clipboard.writeText(link);
         window.alert('Profile Linked Copied...');
@@ -68,7 +68,7 @@ const page = () => {
                         <div>
                             {/* TODO: change url to dynamic */}
                             <QRCodeGenerator
-                                data={`http://localhost:3000/profile/${userData?.userId}`}
+                                data={`https://smart-card-client.vercel.app/profile/${userData?.userId}`}
                             />
                         </div>
                     </div>
