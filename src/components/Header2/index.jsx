@@ -1,10 +1,11 @@
+'use client';
 import React, { useState } from 'react';
 import Link from 'next/link';
 import HambarIcon from '@/public/icons/hambar.svg';
 import CrossIcon from '@/public/icons/cross.svg';
+import { useRouter } from 'next/navigation';
 
 const data = [
-    { title: 'home', link: '/dashboard' },
     { title: 'my profile', link: '/profile/me' },
     { title: 'create card', link: '/profile/create' },
     { title: 'saved cards', link: '/saved' },
@@ -13,10 +14,16 @@ const data = [
 
 const Header2 = () => {
     const [navToggler, setNavToggler] = useState(false);
+    const router = useRouter();
 
     const handleNavToggler = () => {
         setNavToggler(!navToggler);
         return;
+    };
+
+    const logout = () => {
+        sessionStorage.clear();
+        router.push('/');
     };
 
     return (
@@ -57,6 +64,12 @@ const Header2 = () => {
                             </a>
                         </span>
                     ))}
+                    <span
+                        className="capitalize p-2 sm:hover:bg-red-400 sm:dark:hover:bg-red-400 rounded-xl cursor-pointer"
+                        onClick={logout}
+                    >
+                        LOG OUT
+                    </span>
                 </nav>
             </div>
         </div>

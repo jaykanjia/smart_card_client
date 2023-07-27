@@ -8,6 +8,7 @@ import FloatingBtn from '@/components/FloatingBtn';
 import QRIcon from '@/public/icons/qr.svg';
 import ShareIcon from '@/public/icons/share.svg';
 import Loading from '@/components/Loading';
+import url from '@/url';
 
 const QRCodeGenerator = ({ data }) => {
     return (
@@ -30,7 +31,7 @@ const page = () => {
     };
 
     const handleShare = () => {
-        const base = process.env.CLIENT_URL;
+        const base = url.CLIENT_URL;
         const link = base + `/profile/${userData.userId}`;
         navigator.clipboard.writeText(link);
         window.alert('Profile Linked Copied...');
@@ -68,7 +69,7 @@ const page = () => {
                         <div>
                             {/* TODO: change url to dynamic */}
                             <QRCodeGenerator
-                                data={`${process.env.CLIENT_URL}/profile/${userData?.userId}`}
+                                data={`${url.CLIENT_URL}/profile/${userData?.userId}`}
                             />
                         </div>
                     </div>
