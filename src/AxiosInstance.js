@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const AxiosInstance = axios.create({
-    baseURL: 'https://smart-card-server.vercel.app/api',
+    baseURL: `${process.env.CLIENT_URL}/api`,
     // timeout: 1500,
     headers: {},
 });
