@@ -1,12 +1,14 @@
-'use client';
 import React from 'react';
-import Image from 'next/image';
-import ImagePicker from '../ImagePicker';
 import { useRouter } from 'next/navigation';
 import styles from './register.module.css';
 
-const ProfileForm = () => {
+const ProfileForm = ({ setFormIndex }) => {
     const router = useRouter();
+
+    const handleNextClick = () => {
+        setFormIndex(1);
+    };
+
     return (
         <main
             className={`w-full md:py-8 min-h-screen flex justify-center items-center bg-light-300 dark:bg-dark-700`}
@@ -78,6 +80,16 @@ const ProfileForm = () => {
                         />
                     </div>
                     <div className={styles.inputContainer}>
+                        <span className={styles.details}>Website Link</span>
+                        <input
+                            className={styles.inputbox}
+                            type="url"
+                            placeholder="Enter your website"
+                            required
+                            title="Please enter your website link"
+                        />
+                    </div>
+                    <div className={styles.inputContainer}>
                         <div className={styles.data}>
                             <span className={styles.details}>Address</span>
                         </div>
@@ -121,18 +133,6 @@ const ProfileForm = () => {
                             }}
                         />
                     </div>
-                    <div className="md:col-span-2 grid md:grid-cols-2 gap-8">
-                        <div className={styles.inputContainer}>
-                            <span className={styles.details}>
-                                Profile Image
-                            </span>
-                            <ImagePicker />
-                        </div>
-                        <div className={styles.inputContainer}>
-                            <span className={styles.details}>Banner Image</span>
-                            <ImagePicker />
-                        </div>
-                    </div>
                 </div>
                 <div className="m-[30px_0px] flex gap-3">
                     <button
@@ -143,8 +143,9 @@ const ProfileForm = () => {
                     </button>
                     <button
                         className={`bg-primary text-white w-full hover:bg-primary hover:bg-opacity-70 rounded-md p-2`}
+                        onClick={handleNextClick}
                     >
-                        Create Profile
+                        Next
                     </button>
                 </div>
                 {/* <div className="flex flex-row gap-[5px]">
