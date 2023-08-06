@@ -9,6 +9,7 @@ import QRIcon from '@/public/icons/qr.svg';
 import ShareIcon from '@/public/icons/share.svg';
 import Loading from '@/components/Loading';
 import url from '@/url';
+import { toast } from 'react-toastify';
 
 const QRCodeGenerator = ({ data }) => {
     return (
@@ -34,23 +35,31 @@ const page = () => {
         const base = url.CLIENT_URL;
         const link = base + `/profile/${userData.userId}`;
         navigator.clipboard.writeText(link);
-        window.alert('Profile Linked Copied...');
+        toast.info('Profile Linked Copied...');
         return;
     };
 
-    useEffect(async () => {
-        setLoading(true);
+    const fetchData = async () => {
         try {
             const response = await AxiosInstance.get('/profile', {
                 headers: {
                     'auth-token': sessionStorage.getItem('AUTH_TOKEN'),
                 },
             });
-            setUserData(response.data.data);
+            if (response.ok) return setUserData(response?.data?.data);
         } catch (error) {
-            console.log(error);
+            console.log('error', error);
+            window.alert(error.response.data.error);
+            toast.error(error.response.data.error);
+            router.back();
         }
+    };
+
+    useEffect(() => {
+        setLoading(true);
+        fetchData();
         setLoading(false);
+        return () => {};
     }, []);
 
     if (loading) {
@@ -68,40 +77,47 @@ const page = () => {
                         ></div>
                         <div>
                             {/* TODO: change url to dynamic */}
-                            <QRCodeGenerator
-                                data={`${url.CLIENT_URL}/profile/${userData?.userId}`}
-                            />
+                            {userData && (
+                                <QRCodeGenerator
+                                    data={`${url.CLIENT_URL}/profile/${userData?.userId}`}
+                                />
+                            )}
                         </div>
                     </div>
                 </div>
             )}
-            <Template data={userData} />
-            <div className="absolute bottom-8 right-4 sm:right-10 flex flex-col gap-4">
-                <FloatingBtn onClick={(e) => handleShare(e)}>
-                    <ShareIcon />
-                </FloatingBtn>
-                <FloatingBtn onClick={handleQrContainer}>
-                    <QRIcon />
-                </FloatingBtn>
-            </div>
-            <div className="absolute top-8 left-4 sm:right-10 flex flex-col gap-4">
-                <FloatingBtn onClick={router.back}>
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        strokeWidth={1.5}
-                        stroke="currentColor"
-                        className="w-6 h-6"
-                    >
-                        <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M19.5 12h-15m0 0l6.75 6.75M4.5 12l6.75-6.75"
-                        />
-                    </svg>
-                </FloatingBtn>
-            </div>
+
+            {userData && (
+                <>
+                    <Template data={userData} />
+                    <div className="absolute bottom-8 right-4 sm:right-10 flex flex-col gap-4">
+                        <FloatingBtn onClick={(e) => handleShare(e)}>
+                            <ShareIcon />
+                        </FloatingBtn>
+                        <FloatingBtn onClick={handleQrContainer}>
+                            <QRIcon />
+                        </FloatingBtn>
+                    </div>
+                    <div className="absolute top-8 left-4 sm:right-10 flex flex-col gap-4">
+                        <FloatingBtn onClick={router.back}>
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                strokeWidth={1.5}
+                                stroke="currentColor"
+                                className="w-6 h-6"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    d="M19.5 12h-15m0 0l6.75 6.75M4.5 12l6.75-6.75"
+                                />
+                            </svg>
+                        </FloatingBtn>
+                    </div>
+                </>
+            )}
         </div>
     );
 };

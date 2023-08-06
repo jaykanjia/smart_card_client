@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 // const data = {
 //     profileImage: '/images/photo.jpeg',
@@ -89,20 +90,44 @@ const Template = ({ data }) => {
                     >
                         {data?.socialLinks?.map((item) => {
                             return (
-                                <div className="p-3 inline-block bg-light-300 dark:bg-dark-500 rounded-[20px]">
-                                    <Image
-                                        src={item.icon}
-                                        width={45}
-                                        height={45}
-                                    />
-                                </div>
+                                <Link href={`//${item.link}`} target="_blank">
+                                    <div className="p-3 inline-block bg-light-300 dark:bg-dark-500 rounded-[20px]">
+                                        <Image
+                                            src={`/images/${item.title}.png`}
+                                            width={45}
+                                            height={45}
+                                            title={item.link}
+                                        />
+                                    </div>
+                                </Link>
                             );
                         })}
                     </div>
                 </div>
                 <div className="flex flex-col gap-4">
                     <p className="text-lg font-semibold">Contact Detail</p>
-                    {data?.contactDetails?.map((item) => {
+                    {data?.contactDetails &&
+                        Object.keys(data?.contactDetails).map((key) => {
+                            return (
+                                <div className="flex gap-4 items-center rounded-xl">
+                                    <div className="bg-light-300 dark:bg-dark-500 p-3 rounded-[20px]">
+                                        <Image
+                                            className="invert dark:invert-0 opacity-40"
+                                            src={`/images/${key}.png`}
+                                            height={30}
+                                            width={30}
+                                        />
+                                    </div>
+                                    <div className="flex flex-col w-full">
+                                        <p className="font-semibold">
+                                            {data?.contactDetails[key]}
+                                        </p>
+                                        <p className="font-light">Personal</p>
+                                    </div>
+                                </div>
+                            );
+                        })}
+                    {/* {data?.contactDetails?.map((item) => {
                         return (
                             <div className="flex gap-4 items-center rounded-xl">
                                 <div className="bg-light-300 dark:bg-dark-500 p-3 rounded-[20px]">
@@ -121,7 +146,7 @@ const Template = ({ data }) => {
                                 </div>
                             </div>
                         );
-                    })}
+                    })} */}
                 </div>
             </div>
         </div>

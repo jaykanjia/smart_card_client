@@ -1,8 +1,9 @@
 'use client';
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useRef } from 'react';
 import Login from '@/components/Login';
 import AxiosInstance from '@/AxiosInstance';
 import { useRouter } from 'next/navigation';
+import { toast } from 'react-toastify';
 
 const page = () => {
     const router = useRouter();
@@ -18,11 +19,11 @@ const page = () => {
             });
             console.log(response.data);
             sessionStorage.setItem('AUTH_TOKEN', response.data.authToken);
-            window.alert('Login Successfull');
+            toast.success('Login Successfull');
             router.push('/dashboard');
         } catch (error) {
             console.log(error);
-            window.alert(error?.response?.data?.error);
+            toast.error(error?.response?.data?.error);
         }
     };
 

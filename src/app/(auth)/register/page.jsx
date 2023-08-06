@@ -4,6 +4,7 @@ import Register from '@/components/Register';
 import React, { useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import AxiosInstance from '@/AxiosInstance';
+import { toast } from 'react-toastify';
 
 const page = () => {
     const router = useRouter();
@@ -20,11 +21,11 @@ const page = () => {
                 password: passwordRef.current.value,
             });
             console.log(response);
-            window.alert('Registered Successfull');
+            toast.success('Registered Successfull');
             router.push('/dashboard');
         } catch (error) {
             console.log(error);
-            window.alert(error?.response?.data?.error);
+            toast.alert(error?.response?.data?.error);
         }
     };
 
