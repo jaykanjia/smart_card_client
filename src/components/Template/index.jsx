@@ -2,56 +2,6 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-// const data = {
-//     profileImage: '/images/photo.jpeg',
-//     bannerImage: '/images/banner.png',
-//     name: 'Zeel Hirpara',
-//     designation: 'UI / UX Designer',
-//     about: 'Web Developer Intern at The Special Character Building Scalable Solutions with React JS, Java script, MongoDB, and Next.js',
-//     socialLinks: [
-//         {
-//             icon: '/images/facebook.png',
-//         },
-//         {
-//             icon: '/images/linkedin.png',
-//         },
-//         {
-//             icon: '/images/instagram.png',
-//         },
-//         {
-//             icon: '/images/skype.png',
-//         },
-//         {
-//             icon: '/images/twitter.png',
-//         },
-//         {
-//             icon: '/images/whatsapp.png',
-//         },
-//     ],
-//     contactDetails: [
-//         {
-//             icon: '/images/phone.png',
-//             title: '1234567890',
-//             tag: 'work',
-//         },
-//         {
-//             icon: '/images/mail.png',
-//             title: 'abc@gmail.com',
-//             tag: 'work',
-//         },
-//         {
-//             icon: '/images/weblink.png',
-//             title: 'www.abc.com',
-//             tag: 'company',
-//         },
-//         {
-//             icon: '/images/address.png',
-//             title: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, impedit?',
-//             tag: 'company',
-//         },
-//     ],
-// };
-
 const Template = ({ data }) => {
     return (
         <div className="w-full h-screen m-auto bg-light-500 dark:bg-dark-700 p-8 overflow-y-scroll overflow-x-hidden noScrollbar">
@@ -60,6 +10,8 @@ const Template = ({ data }) => {
                     <Image
                         src={data?.bannerImage || '/images/banner.jpg'}
                         style={{ objectFit: 'cover' }}
+                        priority
+                        alt="user banner"
                         fill
                     />
                 </div>
@@ -67,6 +19,8 @@ const Template = ({ data }) => {
                     <Image
                         src={data?.profileImage || '/images/avatar.png'}
                         style={{ objectFit: 'cover' }}
+                        alt="user profile"
+                        priority
                         width={300}
                         height={300}
                     />
@@ -90,12 +44,17 @@ const Template = ({ data }) => {
                     >
                         {data?.socialLinks?.map((item) => {
                             return (
-                                <Link href={`//${item.link}`} target="_blank">
+                                <Link
+                                    key={item.link}
+                                    href={`//${item.link}`}
+                                    target="_blank"
+                                >
                                     <div className="p-3 inline-block bg-light-300 dark:bg-dark-500 rounded-[20px]">
                                         <Image
                                             src={`/images/${item.title}.png`}
                                             width={45}
                                             height={45}
+                                            alt="icon"
                                             title={item.link}
                                         />
                                     </div>
@@ -109,12 +68,16 @@ const Template = ({ data }) => {
                     {data?.contactDetails &&
                         Object.keys(data?.contactDetails).map((key) => {
                             return (
-                                <div className="flex gap-4 items-center rounded-xl">
+                                <div
+                                    key={key}
+                                    className="flex gap-4 items-center rounded-xl"
+                                >
                                     <div className="bg-light-300 dark:bg-dark-500 p-3 rounded-[20px]">
                                         <Image
                                             className="invert dark:invert-0 opacity-40"
                                             src={`/images/${key}.png`}
                                             height={30}
+                                            alt="icon"
                                             width={30}
                                         />
                                     </div>

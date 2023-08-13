@@ -31,7 +31,7 @@ const Preview = ({ data, setFormIndex }) => {
             <p>Address: {data.contactDetails.address}</p>
             {data &&
                 data.socialLinks.map((item) => (
-                    <p>
+                    <p key={item.title}>
                         {item.title}: {item.link}
                     </p>
                 ))}

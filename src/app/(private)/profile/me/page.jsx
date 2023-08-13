@@ -46,7 +46,7 @@ const page = () => {
                     'auth-token': sessionStorage.getItem('AUTH_TOKEN'),
                 },
             });
-            if (response.ok) return setUserData(response?.data?.data);
+            return setUserData(response?.data?.data);
         } catch (error) {
             console.log('error', error);
             window.alert(error.response.data.error);
