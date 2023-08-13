@@ -1,5 +1,4 @@
-'use client';
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Loading from '@/components/Loading';
 import ImageContentSection from '@/components/IamgeContent';
 import Header2 from '@/components/Header2';
@@ -27,15 +26,6 @@ const data = [
 ];
 
 const page = () => {
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        setLoading(false);
-    });
-
-    if (loading) {
-        return <Loading />;
-    }
     return (
         <div className="max-w-screen-xl mx-auto bg-light-500 dark:bg-dark-700 py-4">
             <Header2 />
