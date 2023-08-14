@@ -8,7 +8,7 @@ import { toast } from 'react-toastify';
 
 const data = [
     { title: 'my profile', link: '/profile/me' },
-    { title: 'create card', link: '/profile/create' },
+    { title: 'create card', link: '/profile/createCard' },
     { title: 'saved cards', link: '/saved' },
     { title: 'order card', link: '/orderCard' },
 ];
