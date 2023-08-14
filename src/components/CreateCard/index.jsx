@@ -66,235 +66,210 @@ const CreateCard = () => {
 
     return (
         <>
-            <div className="w-full min-h-[100vh] flex justify-center items-center bg-[#222222]">
-                <form
-                    onSubmit={handleSubmitClick}
-                    className={`max-w-5xl w-[100%] bg-[#111111] sm:p-[25px_30px] p-[15px_20px] sm:m-[30px_30px] m-[0px_15px] rounded-[10px]   `}
+            <form onSubmit={handleSubmitClick}>
+                <div
+                    className={`flex justify-center text-gray-500 font-semibold`}
                 >
-                    <div
-                        className={`flex justify-center text-gray-500 font-semibold`}
-                    >
-                        WELCOME !
+                    WELCOME !
+                </div>
+                <div
+                    className={`text-2xl font-semibold flex justify-center py-4`}
+                >
+                    Create Your Profile
+                </div>
+                <div className="grid md:grid-cols-2 gap-8 items-center w-full">
+                    <div className={styles.inputContainer}>
+                        <span
+                            className={clsx([styles.details, styles.required])}
+                        >
+                            Name
+                        </span>
+                        <input
+                            ref={nameRef}
+                            className={styles.inputbox}
+                            type="text"
+                            placeholder="Enter your name"
+                            required
+                        />
                     </div>
-                    <div
-                        className={`text-2xl font-semibold flex justify-center py-4`}
-                    >
-                        Create Your Profile
+                    <div className={styles.inputContainer}>
+                        <span
+                            className={clsx([styles.details, styles.required])}
+                        >
+                            Designation
+                        </span>
+                        <input
+                            ref={designationRef}
+                            className={styles.inputbox}
+                            type="text"
+                            placeholder="Tell us about your work"
+                            required
+                        />
                     </div>
-                    <div className="grid md:grid-cols-2 gap-8 items-center w-full">
-                        <div className={styles.inputContainer}>
-                            <span
-                                className={clsx([
-                                    styles.details,
-                                    styles.required,
-                                ])}
-                            >
-                                Name
-                            </span>
-                            <input
-                                ref={nameRef}
-                                className={styles.inputbox}
-                                type="text"
-                                placeholder="Enter your name"
-                                required
-                            />
-                        </div>
-                        <div className={styles.inputContainer}>
-                            <span
-                                className={clsx([
-                                    styles.details,
-                                    styles.required,
-                                ])}
-                            >
-                                Designation
-                            </span>
-                            <input
-                                ref={designationRef}
-                                className={styles.inputbox}
-                                type="text"
-                                placeholder="Tell us about your work"
-                                required
-                            />
-                        </div>
-                        <div className={styles.inputContainer}>
-                            <span
-                                className={clsx([
-                                    styles.details,
-                                    styles.required,
-                                ])}
-                            >
-                                Contact Number
-                            </span>
-                            <input
-                                ref={contactNumebrRef}
-                                className={styles.inputbox}
-                                type="text"
-                                placeholder="Enter your contact number"
-                                pattern="[0-9]{10}$"
-                                required
-                            />
-                        </div>
-                        <div className={styles.inputContainer}>
-                            <span
-                                className={clsx([
-                                    styles.details,
-                                    styles.required,
-                                ])}
-                            >
-                                Email
-                            </span>
-                            <input
-                                ref={emailRef}
-                                className={styles.inputbox}
-                                type="email"
-                                placeholder="Enter your Company email address"
-                                required
-                                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-                                title="Please enter a valid email address"
-                            />
-                        </div>
-                        <div className={styles.inputContainer}>
-                            <span
-                                className={clsx([
-                                    styles.details,
-                                    styles.required,
-                                ])}
-                            >
-                                Website Link
-                            </span>
-                            <input
-                                ref={websiteRef}
-                                className={styles.inputbox}
-                                type="url"
-                                placeholder="Enter your website"
-                                required
-                                title="Please enter your website link"
-                            />
-                        </div>
-                        <div className={styles.inputContainer}>
-                            <span
-                                className={clsx([
-                                    styles.details,
-                                    styles.required,
-                                ])}
-                            >
-                                Address
-                            </span>
-                            <textarea
-                                ref={addressRef}
-                                className={styles.inputbox}
-                                type="text"
-                                required
-                                style={{
-                                    resize: 'vertical',
-                                    overflow: 'hidden',
-                                }}
-                                onInput={(e) => {
-                                    e.target.style.height = 'auto';
-                                    e.target.style.height =
-                                        e.target.scrollHeight + 'px';
-                                }}
-                            />
-                        </div>
-                        <div className={`styles.inputContainer md:col-span-2`}>
-                            <span
-                                className={clsx([
-                                    styles.details,
-                                    styles.required,
-                                ])}
-                            >
-                                About
-                            </span>
-                            <textarea
-                                ref={aboutRef}
-                                className={styles.inputbox}
-                                type="about"
-                                required
-                                style={{
-                                    resize: 'vertical',
-                                    overflow: 'hidden',
-                                }}
-                                onInput={(e) => {
-                                    e.target.style.height = 'auto';
-                                    e.target.style.height =
-                                        e.target.scrollHeight + 'px';
-                                }}
-                            />
-                        </div>
-
-                        <div className={styles.inputContainer}>
-                            <span className={styles.details}>YouTube</span>
-                            <input
-                                ref={youtubeRef}
-                                className={styles.inputbox}
-                                type="url"
-                                placeholder="LinkedIn Profile Link"
-                                required
-                            />
-                        </div>
-                        <div className={styles.inputContainer}>
-                            <span className={styles.details}>LinkedIn</span>
-                            <input
-                                ref={linkedinRef}
-                                className={styles.inputbox}
-                                type="url"
-                                placeholder="YouTube Link"
-                                required
-                            />
-                        </div>
-                        <div className={styles.inputContainer}>
-                            <span className={styles.details}>Instagram</span>
-                            <input
-                                ref={instagramRef}
-                                className={styles.inputbox}
-                                type="url"
-                                placeholder="Instagram Profile Link"
-                                required
-                            />
-                        </div>
-                        <div className={styles.inputContainer}>
-                            <span className={styles.details}>WhatsApp</span>
-                            <input
-                                ref={whatsappRef}
-                                className={styles.inputbox}
-                                type="text"
-                                placeholder="WhatsApp Number"
-                                required
-                            />
-                        </div>
-                        <div className={styles.inputContainer}>
-                            <span className={styles.details}>Facebook</span>
-                            <input
-                                ref={facebookRef}
-                                className={styles.inputbox}
-                                type="url"
-                                placeholder="Facebook Profile Link"
-                                required
-                            />
-                        </div>
-                        <div className={styles.inputContainer}>
-                            <span className={styles.details}>Skype</span>
-                            <input
-                                ref={skypeRef}
-                                className={styles.inputbox}
-                                type="text"
-                                placeholder="SkypeId"
-                                required
-                            />
-                        </div>
-                        <div className={styles.inputContainer}>
-                            <span className={styles.details}>Twitter</span>
-                            <input
-                                ref={twitterRef}
-                                className={styles.inputbox}
-                                type="url"
-                                placeholder="Twitter Profile Link"
-                                required
-                            />
-                        </div>
+                    <div className={styles.inputContainer}>
+                        <span
+                            className={clsx([styles.details, styles.required])}
+                        >
+                            Contact Number
+                        </span>
+                        <input
+                            ref={contactNumebrRef}
+                            className={styles.inputbox}
+                            type="text"
+                            placeholder="Enter your contact number"
+                            pattern="[0-9]{10}$"
+                            required
+                        />
+                    </div>
+                    <div className={styles.inputContainer}>
+                        <span
+                            className={clsx([styles.details, styles.required])}
+                        >
+                            Email
+                        </span>
+                        <input
+                            ref={emailRef}
+                            className={styles.inputbox}
+                            type="email"
+                            placeholder="Enter your Company email address"
+                            required
+                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                            title="Please enter a valid email address"
+                        />
+                    </div>
+                    <div className={styles.inputContainer}>
+                        <span
+                            className={clsx([styles.details, styles.required])}
+                        >
+                            Website Link
+                        </span>
+                        <input
+                            ref={websiteRef}
+                            className={styles.inputbox}
+                            type="url"
+                            placeholder="Enter your website"
+                            required
+                            title="Please enter your website link"
+                        />
+                    </div>
+                    <div className={styles.inputContainer}>
+                        <span
+                            className={clsx([styles.details, styles.required])}
+                        >
+                            Address
+                        </span>
+                        <textarea
+                            ref={addressRef}
+                            className={styles.inputbox}
+                            type="text"
+                            required
+                            style={{
+                                resize: 'vertical',
+                                overflow: 'hidden',
+                            }}
+                            onInput={(e) => {
+                                e.target.style.height = 'auto';
+                                e.target.style.height =
+                                    e.target.scrollHeight + 'px';
+                            }}
+                        />
+                    </div>
+                    <div className={`styles.inputContainer md:col-span-2`}>
+                        <span
+                            className={clsx([styles.details, styles.required])}
+                        >
+                            About
+                        </span>
+                        <textarea
+                            ref={aboutRef}
+                            className={styles.inputbox}
+                            type="about"
+                            required
+                            style={{
+                                resize: 'vertical',
+                                overflow: 'hidden',
+                            }}
+                            onInput={(e) => {
+                                e.target.style.height = 'auto';
+                                e.target.style.height =
+                                    e.target.scrollHeight + 'px';
+                            }}
+                        />
                     </div>
 
-                    {/* <div className="flex justify-evenly">
+                    <div className={styles.inputContainer}>
+                        <span className={styles.details}>YouTube</span>
+                        <input
+                            ref={youtubeRef}
+                            className={styles.inputbox}
+                            type="url"
+                            placeholder="LinkedIn Profile Link"
+                            required
+                        />
+                    </div>
+                    <div className={styles.inputContainer}>
+                        <span className={styles.details}>LinkedIn</span>
+                        <input
+                            ref={linkedinRef}
+                            className={styles.inputbox}
+                            type="url"
+                            placeholder="YouTube Link"
+                            required
+                        />
+                    </div>
+                    <div className={styles.inputContainer}>
+                        <span className={styles.details}>Instagram</span>
+                        <input
+                            ref={instagramRef}
+                            className={styles.inputbox}
+                            type="url"
+                            placeholder="Instagram Profile Link"
+                            required
+                        />
+                    </div>
+                    <div className={styles.inputContainer}>
+                        <span className={styles.details}>WhatsApp</span>
+                        <input
+                            ref={whatsappRef}
+                            className={styles.inputbox}
+                            type="text"
+                            placeholder="WhatsApp Number"
+                            required
+                        />
+                    </div>
+                    <div className={styles.inputContainer}>
+                        <span className={styles.details}>Facebook</span>
+                        <input
+                            ref={facebookRef}
+                            className={styles.inputbox}
+                            type="url"
+                            placeholder="Facebook Profile Link"
+                            required
+                        />
+                    </div>
+                    <div className={styles.inputContainer}>
+                        <span className={styles.details}>Skype</span>
+                        <input
+                            ref={skypeRef}
+                            className={styles.inputbox}
+                            type="text"
+                            placeholder="SkypeId"
+                            required
+                        />
+                    </div>
+                    <div className={styles.inputContainer}>
+                        <span className={styles.details}>Twitter</span>
+                        <input
+                            ref={twitterRef}
+                            className={styles.inputbox}
+                            type="url"
+                            placeholder="Twitter Profile Link"
+                            required
+                        />
+                    </div>
+                </div>
+
+                {/* <div className="flex justify-evenly">
                         <div className={styles.inputContainer}>
                             <span className={styles.details}>
                                 Profile Image
@@ -307,23 +282,22 @@ const CreateCard = () => {
                         </div>
                     </div> */}
 
-                    {/*buttons */}
-                    <div className="m-[30px_0px] flex gap-3">
-                        <button
-                            className={`bg-red-500 text-white w-full hover:bg-red-400 hover:bg-opacity-70 rounded-md p-2`}
-                            onClick={() => router.back()}
-                        >
-                            Cancel
-                        </button>
-                        <button
-                            className={`bg-primary text-white w-full hover:bg-primary hover:bg-opacity-70 rounded-md p-2`}
-                            type="submit"
-                        >
-                            Submit
-                        </button>
-                    </div>
-                </form>
-            </div>
+                {/*buttons */}
+                <div className="m-[30px_0px] flex gap-3">
+                    <button
+                        className={`bg-red-500 text-white w-full hover:bg-red-400 hover:bg-opacity-70 rounded-md p-2`}
+                        onClick={() => router.back()}
+                    >
+                        Cancel
+                    </button>
+                    <button
+                        className={`bg-primary text-white w-full hover:bg-primary hover:bg-opacity-70 rounded-md p-2`}
+                        type="submit"
+                    >
+                        Submit
+                    </button>
+                </div>
+            </form>
         </>
     );
 };
