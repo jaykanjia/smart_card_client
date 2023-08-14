@@ -18,6 +18,8 @@ const Template = ({ data }) => {
                     <Image
                         src={data?.profileImage || '/images/avatar.png'}
                         style={{ objectFit: 'cover' }}
+                        alt="user profile"
+                        priority
                         width={300}
                         height={300}
                     />
