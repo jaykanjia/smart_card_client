@@ -1,6 +1,5 @@
 import React from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 
 const Template = ({ data }) => {
     return (
@@ -19,8 +18,6 @@ const Template = ({ data }) => {
                     <Image
                         src={data?.profileImage || '/images/avatar.png'}
                         style={{ objectFit: 'cover' }}
-                        alt="user profile"
-                        priority
                         width={300}
                         height={300}
                     />
