@@ -1,3 +1,4 @@
+import BackBtn from '@/components/BackBtn';
 import React from 'react';
 
 const layout = ({ children }) => {
@@ -9,6 +10,7 @@ const layout = ({ children }) => {
                 className={`max-w-screen-md w-full bg-light-500 sm:dark:bg-dark-900 dark:bg-dark-700 p-8 md:rounded-xl`}
             >
                 {children}
+                <BackBtn />
             </div>
         </main>
     );

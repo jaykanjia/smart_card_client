@@ -10,6 +10,7 @@ import ShareIcon from '@/public/icons/share.svg';
 import Loading from '@/components/Loading';
 import url from '@/url';
 import { toast } from 'react-toastify';
+import BackBtn from '@/components/BackBtn';
 
 const QRCodeGenerator = ({ data }) => {
     return (
@@ -98,24 +99,7 @@ const page = () => {
                             <QRIcon />
                         </FloatingBtn>
                     </div>
-                    <div className="absolute top-8 left-4 sm:right-10 flex flex-col gap-4">
-                        <FloatingBtn onClick={router.back}>
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                strokeWidth={1.5}
-                                stroke="currentColor"
-                                className="w-6 h-6"
-                            >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    d="M19.5 12h-15m0 0l6.75 6.75M4.5 12l6.75-6.75"
-                                />
-                            </svg>
-                        </FloatingBtn>
-                    </div>
+                    <BackBtn />
                 </>
             )}
         </div>

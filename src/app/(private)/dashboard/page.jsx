@@ -5,13 +5,6 @@ import Header2 from '@/components/Header2';
 
 const data = [
     {
-        image: '/images/dummyCard.png',
-        title: 'Purchase card',
-        description:
-            "Choose between basic & custom SBC card & enter the name you want us to custom print on your card. We'll add your custom QR code in the card and ship it to you.",
-    },
-
-    {
         image: '/images/mobile.webp',
         title: 'Create your Profile',
         description:
@@ -22,6 +15,12 @@ const data = [
         title: 'Share it with a Tap',
         description:
             'Card can be tapped on most of the Android phones and newer iPhones. Non-NFC phones can scan the QR code to access your profile. No apps required.',
+    },
+    {
+        image: '/images/dummyCard.png',
+        title: 'Purchase card',
+        description:
+            "Choose between basic & custom SBC card & enter the name you want us to custom print on your card. We'll add your custom QR code in the card and ship it to you.",
     },
 ];
 
