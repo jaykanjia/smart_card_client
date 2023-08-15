@@ -7,6 +7,7 @@ import ChevronDown from '@/public/icons/dropdown.svg';
 import { useRouter } from 'next/navigation';
 import { toast } from 'react-toastify';
 import styles from './style.module.css';
+import AxiosInstance from '@/AxiosInstance';
 
 const data = [
     {
@@ -30,6 +31,19 @@ const data = [
     { title: 'order card', link: '/orderCard' },
 ];
 
+const deleteProfile = async () => {
+    try {
+        const response = await AxiosInstance.delete('/profile', {
+            headers: {
+                'auth-token': localStorage.getItem('AUTH_TOKEN'),
+            },
+        });
+        toast.success(response?.data?.message);
+    } catch (error) {
+        toast.error(error?.response?.data?.error);
+    }
+};
+
 const Header2 = () => {
     const [navToggler, setNavToggler] = useState(false);
     const router = useRouter();
@@ -40,7 +54,7 @@ const Header2 = () => {
     };
 
     const logout = () => {
-        sessionStorage.clear();
+        localStorage.clear();
         toast.info('Logged Out');
         router.push('/');
     };
@@ -102,6 +116,12 @@ const Header2 = () => {
                                                     </li>
                                                 ),
                                             )}
+                                        <li
+                                            className={styles.linkRed}
+                                            onClick={deleteProfile}
+                                        >
+                                            Delete Profile
+                                        </li>
                                     </ul>
                                 </div>
                             ) : (

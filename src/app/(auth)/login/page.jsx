@@ -17,12 +17,10 @@ const page = () => {
                 email: emailRef.current.value,
                 password: passwordRef.current.value,
             });
-            console.log(response.data);
-            sessionStorage.setItem('AUTH_TOKEN', response.data.authToken);
+            localStorage.setItem('AUTH_TOKEN', response.data.authToken);
             toast.success('Login Successfull');
             router.push('/dashboard');
         } catch (error) {
-            console.log(error);
             toast.error(error?.response?.data?.error);
         }
     };
