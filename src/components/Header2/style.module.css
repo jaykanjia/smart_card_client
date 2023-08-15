@@ -29,5 +29,5 @@
     @apply capitalize p-2 sm:hover:bg-light-500 sm:dark:hover:bg-dark-500 rounded-xl;
 }
 .linkRed {
-    @apply capitalize p-2 sm:hover:bg-red-400 sm:dark:hover:bg-red-400 rounded-xl cursor-pointer;
+    @apply capitalize p-2 border border-red-500 sm:dark:hover:bg-red-400 rounded-xl cursor-pointer;
 }

@@ -20,7 +20,6 @@ const page = () => {
                 email: emailRef.current.value,
                 password: passwordRef.current.value,
             });
-            console.log(response);
             toast.success('Registered Successfull');
             router.push('/dashboard');
         } catch (error) {

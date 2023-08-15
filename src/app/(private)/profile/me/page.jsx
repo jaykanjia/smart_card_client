@@ -44,14 +44,12 @@ const page = () => {
         try {
             const response = await AxiosInstance.get('/profile', {
                 headers: {
-                    'auth-token': sessionStorage.getItem('AUTH_TOKEN'),
+                    'auth-token': localStorage.getItem('AUTH_TOKEN'),
                 },
             });
             return setUserData(response?.data?.data);
         } catch (error) {
-            console.log('error', error);
-            window.alert(error.response.data.error);
-            toast.error(error.response.data.error);
+            toast.error(error?.response?.data?.error);
             router.back();
         }
     };

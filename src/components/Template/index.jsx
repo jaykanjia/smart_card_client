@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 const Template = ({ data }) => {
     return (
-        <div className="w-full h-screen m-auto bg-light-500 dark:bg-dark-700 p-8 overflow-y-scroll overflow-x-hidden noScrollbar">
+        <div className="w-full h-screen m-auto bg-light-500 dark:bg-dark-700 p-8 pb-20 overflow-y-scroll overflow-x-hidden noScrollbar">
             <div className="relative flex flex-col justify-end items-center md:items-start">
                 <div className="relative rounded-xl overflow-hidden w-full aspect-[10/4] sm:aspect-[10/2]">
                     <Image

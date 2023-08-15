@@ -6,7 +6,7 @@ const layout = ({ children }) => {
     const router = useRouter();
 
     useEffect(() => {
-        const token = sessionStorage.getItem('AUTH_TOKEN');
+        const token = localStorage.getItem('AUTH_TOKEN');
         if (token) router.push('/dashboard');
     }, []);
 
