@@ -3,12 +3,29 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import HambarIcon from '@/public/icons/hambar.svg';
 import CrossIcon from '@/public/icons/cross.svg';
+import ChevronDown from '@/public/icons/dropdown.svg';
 import { useRouter } from 'next/navigation';
 import { toast } from 'react-toastify';
+import styles from './style.module.css';
 
 const data = [
-    { title: 'my profile', link: '/profile/me' },
-    { title: 'create card', link: '/profile/create' },
+    {
+        title: 'Profile',
+        dropdown: [
+            {
+                title: 'See Profile',
+                link: '/profile/me',
+            },
+            {
+                title: 'Create Profile',
+                link: '/profile/create',
+            },
+            {
+                title: 'Update Profile',
+                link: '/profile/update',
+            },
+        ],
+    },
     { title: 'saved cards', link: '/saved' },
     { title: 'order card', link: '/orderCard' },
 ];
@@ -29,21 +46,18 @@ const Header2 = () => {
     };
 
     return (
-        <div className="z-10 sticky top-0 w-[90%] rounded-xl mx-auto flex flex-row md:flex-row-reverse items-center justify-between font-mono text-sm p-4 sm:p-8 bg-light-300 dark:bg-black backdrop-blur-lg bg-opacity-30">
-            <div className="z-20 flex justify-between w-full md:w-auto">
-                <Link
-                    className="pointer-events-none flex items-baseline place-items-center gap-2 lg:pointer-events-auto"
-                    href="/"
-                >
+        <header className={styles.header}>
+            <div className={styles.headerContent}>
+                <Link className={styles.logo} href="/">
                     By
                     <span className="text-xl">SmartBizCard</span>
                 </Link>
-                <div className="w-full flex justify-end md:hidden">
+                <div className={styles.navToggler}>
                     <span onClick={handleNavToggler}>
                         {navToggler ? (
-                            <CrossIcon className="w-8 aspect-square" />
+                            <CrossIcon className={styles.navIcon} />
                         ) : (
-                            <HambarIcon className="w-8 aspect-square" />
+                            <HambarIcon className={styles.navIcon} />
                         )}
                     </span>
                 </div>
@@ -54,27 +68,55 @@ const Header2 = () => {
                         navToggler
                             ? 'flex flex-col absolute top-0 left-0 h-screen'
                             : 'hidden'
-                    } bg-light-300 dark:bg-black bg-opacity-90 md:bg-opacity-0 justify-center md:relative md:flex md:flex-row gap-8 md:gap-2 items-center w-full p-8 sm:p-2`}
+                    } ${styles.navBar}`}
                 >
                     {data.map((item, index) => (
-                        <span key={index}>
-                            <a
-                                className="capitalize p-2 sm:hover:bg-light-500 sm:dark:hover:bg-dark-500 rounded-xl"
-                                href={item.link}
-                            >
-                                {item.title}
-                            </a>
-                        </span>
+                        <div key={index}>
+                            {item.dropdown ? (
+                                <div className="group relative">
+                                    <p
+                                        className={`flex gap-1 items-center ${styles.link}`}
+                                    >
+                                        <span>{item.title}</span>
+                                        <span className="w-6 aspect-square group-hover:rotate-180 duration-300">
+                                            <ChevronDown />
+                                        </span>
+                                    </p>
+                                    <ul
+                                        className={`hidden absolute group-hover:flex ${styles.dropDown}`}
+                                    >
+                                        {item.dropdown &&
+                                            item.dropdown.map(
+                                                (dropdownItem) => (
+                                                    <li key={dropdownItem.link}>
+                                                        <Link
+                                                            className={
+                                                                styles.link
+                                                            }
+                                                            href={
+                                                                dropdownItem.link
+                                                            }
+                                                        >
+                                                            {dropdownItem.title}
+                                                        </Link>
+                                                    </li>
+                                                ),
+                                            )}
+                                    </ul>
+                                </div>
+                            ) : (
+                                <Link className={styles.link} href={item.link}>
+                                    {item.title}
+                                </Link>
+                            )}
+                        </div>
                     ))}
-                    <span
-                        className="capitalize p-2 sm:hover:bg-red-400 sm:dark:hover:bg-red-400 rounded-xl cursor-pointer"
-                        onClick={logout}
-                    >
+                    <span className={styles.linkRed} onClick={logout}>
                         LOG OUT
                     </span>
                 </nav>
             </div>
-        </div>
+        </header>
     );
 };
 

@@ -7,7 +7,7 @@
 }
 
 .inputbox {
-    @apply h-10 rounded-md p-4 text-black w-full;
+    @apply h-10 p-6 w-full border bg-white dark:bg-[#222222] border-gray-500;
 }
 
 .fp {
