@@ -1,5 +1,6 @@
 'use client';
 import AxiosInstance from '@/AxiosInstance';
+import Card from '@/components/Card';
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 
@@ -30,8 +31,10 @@ const page = () => {
     }, []);
 
     return (
-        <div>
-            <p>{JSON.stringify(profiles)}</p>
+        <div className="flex flex-wrap gap-8 justify-evenly w-full p-10">
+            {profiles.map((item) => {
+                return <Card key={item.id} data={item} />;
+            })}
         </div>
     );
 };
