@@ -4,7 +4,7 @@ import React from 'react';
 
 const Card = ({ data }) => {
     return (
-        <div className="bg-white dark:bg-[#111] border border-[#6a6a6a] grid sm:grid-cols-2 items-center w-full aspect-[5/3] shadow-2xl rounded-lg p-4">
+        <div className="bg-white dark:bg-[#111] border border-[#6a6a6a] grid sm:grid-cols-2 items-center w-full sm:max-w-[450px] aspect-[5/3] shadow-2xl rounded-lg p-4 mx-auto justify-center">
             <div className="flex justify-center items-center aspect-square border-b sm:border-b-0 sm:border-r border-[#6a6a6a] p-4">
                 <div className="relative aspect-square bg-white rounded-full h-full overflow-hidden border">
                     <Image src={'/images/avatar.png'} fill />

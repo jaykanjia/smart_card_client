@@ -38,7 +38,7 @@ const page = () => {
             <Header2 />
             <div
                 className={clsx([
-                    'min-h-screen p-8 md:px-20',
+                    'min-h-screen p-8 md:px-20 flex flex-col sm:grid items-center justify-center',
                     styles.gridContainer,
                 ])}
             >
