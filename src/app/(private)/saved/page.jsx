@@ -6,6 +6,8 @@ import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import FloatingBtn from '@/components/FloatingBtn';
 import BackBtn from '@/components/BackBtn';
+import clsx from 'clsx';
+import styles from './styles.module.css';
 
 const page = () => {
     const [profiles, setProfiles] = useState([]);
@@ -34,9 +36,14 @@ const page = () => {
     }, []);
 
     return (
-        <div className='max-w-7xl mx-auto bg-dark-700 relative '>
+        <div className="max-w-screen-xl mx-auto bg-light-500 dark:bg-dark-700 py-4">
             <Header2 />
-            <div className="flex flex-wrap gap-8 justify-center  w-auto p-10 mx-auto">
+            <div
+                className={clsx([
+                    'min-h-screen p-8 md:px-20',
+                    styles.gridContainer,
+                ])}
+            >
                 {profiles.map((item) => {
                     return <Card key={item.id} data={item} />;
                 })}

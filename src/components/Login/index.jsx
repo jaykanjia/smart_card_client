@@ -53,7 +53,9 @@ const Login = ({ onSubmit, emailRef, passwordRef }) => {
                 <div className="flex gap-2">
                     <p className="text-gray-400">Not registered yet?</p>
                     <Link href="/register">
-                        <p className={`underline underline-offset-2`}>
+                        <p
+                            className={`underline underline-offset-2 text-white`}
+                        >
                             Register
                         </p>
                     </Link>

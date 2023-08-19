@@ -10,7 +10,6 @@ import styles from './style.module.css';
 import AxiosInstance from '@/AxiosInstance';
 
 const data = [
-    { title: 'Dashboard', link: '/dashboard' },
     {
         title: 'Profile',
         dropdown: [

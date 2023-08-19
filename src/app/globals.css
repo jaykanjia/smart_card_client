@@ -16,14 +16,19 @@
     }
 }
 
-body {
-    color: rgb(var(--foreground-rgb));
-    background: linear-gradient(
-            to bottom,
-            transparent,
-            rgb(var(--background-end-rgb))
-        )
-        rgb(var(--background-start-rgb));
+@layer base {
+    body {
+        color: rgb(var(--foreground-rgb));
+        background: linear-gradient(
+                to bottom,
+                transparent,
+                rgb(var(--background-end-rgb))
+            )
+            rgb(var(--background-start-rgb));
+    }
+    p {
+        @apply text-sm;
+    }
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
