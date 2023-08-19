@@ -8,7 +8,7 @@
         @apply bg-light-300 dark:bg-black bg-opacity-90 md:bg-opacity-0 justify-center md:relative md:flex md:flex-row gap-8 md:gap-2 items-center w-full p-8 sm:p-2;
 
         & .dropDown {
-            @apply flex-col gap-4 top-full left-0 w-[150px] p-2 py-4 bg-black rounded-xl;
+            @apply flex-col gap-4 top-full left-0 w-[150px] p-2 py-4 bg-light-300 dark:bg-black rounded-xl;
         }
     }
 }
@@ -29,5 +29,5 @@
     @apply capitalize p-2 sm:hover:bg-light-500 sm:dark:hover:bg-dark-500 rounded-xl;
 }
 .linkRed {
-    @apply capitalize p-2 border border-red-500 sm:dark:hover:bg-red-400 rounded-xl cursor-pointer;
+    @apply capitalize p-2 border border-red-500 sm:hover:bg-red-400 rounded-xl cursor-pointer;
 }

@@ -1,8 +1,11 @@
 'use client';
 import AxiosInstance from '@/AxiosInstance';
 import Card from '@/components/Card';
+import Header2 from '@/components/Header2';
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
+import clsx from 'clsx';
+import styles from './styles.module.css';
 
 const page = () => {
     const [profiles, setProfiles] = useState([]);
@@ -31,10 +34,18 @@ const page = () => {
     }, []);
 
     return (
-        <div className="flex flex-wrap gap-8 justify-evenly w-full p-10">
-            {profiles.map((item) => {
-                return <Card key={item.id} data={item} />;
-            })}
+        <div className="max-w-screen-xl mx-auto bg-light-500 dark:bg-dark-700 py-4">
+            <Header2 />
+            <div
+                className={clsx([
+                    'min-h-screen p-8 md:px-20',
+                    styles.gridContainer,
+                ])}
+            >
+                {profiles.map((item) => {
+                    return <Card key={item.id} data={item} />;
+                })}
+            </div>
         </div>
     );
 };
