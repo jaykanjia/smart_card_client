@@ -3,7 +3,7 @@ import React from 'react';
 
 const Card = ({ data }) => {
     return (
-        <div className="bg-white dark:bg-dark-700 border border-[#6a6a6a] grid sm:grid-cols-2 items-center w-full aspect-[5/3] max-w-[500px] shadow-2xl rounded-lg p-4">
+        <div className="bg-white dark:bg-dark-700 border border-[#6a6a6a] grid sm:grid-cols-2 items-center w-full aspect-[5/3] max-w-[500px] shadow-2xl rounded-lg p-4 ">
             <div className="flex justify-center items-center aspect-square border-b sm:border-b-0 sm:border-r border-[#6a6a6a] p-4">
                 <div className="relative aspect-square bg-white rounded-full h-full overflow-hidden border">
                     <Image src={'/images/avatar.png'} fill />

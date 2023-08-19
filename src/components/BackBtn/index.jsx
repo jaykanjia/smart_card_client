@@ -7,7 +7,7 @@ const BackBtn = () => {
     const router = useRouter();
     return (
         <div className="absolute top-8 left-4 sm:right-10 flex flex-col gap-4">
-            <FloatingBtn onClick={router.back}>
+            <FloatingBtn onClick={()=>{router.push('/dashboard')}}>
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"

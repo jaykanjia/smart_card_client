@@ -1,8 +1,11 @@
 'use client';
 import AxiosInstance from '@/AxiosInstance';
 import Card from '@/components/Card';
+import Header2 from '@/components/Header2';
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
+import FloatingBtn from '@/components/FloatingBtn';
+import BackBtn from '@/components/BackBtn';
 
 const page = () => {
     const [profiles, setProfiles] = useState([]);
@@ -31,10 +34,13 @@ const page = () => {
     }, []);
 
     return (
-        <div className="flex flex-wrap gap-8 justify-evenly w-full p-10">
-            {profiles.map((item) => {
-                return <Card key={item.id} data={item} />;
-            })}
+        <div className='max-w-7xl mx-auto bg-dark-700 relative '>
+            <Header2 />
+            <div className="flex flex-wrap gap-8 justify-center  w-auto p-10 mx-auto">
+                {profiles.map((item) => {
+                    return <Card key={item.id} data={item} />;
+                })}
+            </div>
         </div>
     );
 };
