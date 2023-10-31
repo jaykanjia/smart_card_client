@@ -1,8 +1,8 @@
 'use client';
 import AxiosInstance from '@/AxiosInstance';
 import { toast } from 'react-toastify';
-import UpdateCard from '@/components/UpdateCard';
 import { useEffect, useState } from 'react';
+import UpdateCard from '@/components/UpdateCard';
 
 const page = () => {
     const [userData, setUserData] = useState({});

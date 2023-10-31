@@ -8,7 +8,6 @@ import FloatingBtn from '@/components/FloatingBtn';
 import QRIcon from '@/public/icons/qr.svg';
 import ShareIcon from '@/public/icons/share.svg';
 import Loading from '@/components/Loading';
-import url from '@/url';
 import { toast } from 'react-toastify';
 import BackBtn from '@/components/BackBtn';
 
@@ -33,7 +32,7 @@ const page = () => {
     };
 
     const handleShare = () => {
-        const base = url.CLIENT_URL;
+        const base = process.env.NEXT_PUBLIC_CLIENT_URL;
         const link = base + `/profile/${userData.userId}`;
         navigator.clipboard.writeText(link);
         toast.info('Profile Linked Copied...');
