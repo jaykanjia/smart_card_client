@@ -23,7 +23,6 @@ const page = () => {
             toast.success('Registered Successfull');
             router.push('/dashboard');
         } catch (error) {
-            console.log(error);
             toast.alert(error?.response?.data?.error);
         }
     };

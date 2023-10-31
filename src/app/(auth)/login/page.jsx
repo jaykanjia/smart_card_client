@@ -1,5 +1,5 @@
 'use client';
-import React, { useRef } from 'react';
+import { useRef, useState } from 'react';
 import Login from '@/components/Login';
 import AxiosInstance from '@/AxiosInstance';
 import { useRouter } from 'next/navigation';
@@ -10,8 +10,11 @@ const page = () => {
     const emailRef = useRef();
     const passwordRef = useRef();
 
+    const [isPending, setIsPending] = useState();
+
     const onSubmit = async (e) => {
         e.preventDefault();
+        setIsPending(true);
         try {
             const response = await AxiosInstance.post('/user/login', {
                 email: emailRef.current.value,
@@ -22,6 +25,8 @@ const page = () => {
             router.push('/dashboard');
         } catch (error) {
             toast.error(error?.response?.data?.error);
+        } finally {
+            setIsPending(false);
         }
     };
 
@@ -31,6 +36,7 @@ const page = () => {
                 onSubmit={onSubmit}
                 emailRef={emailRef}
                 passwordRef={passwordRef}
+                isPending={isPending}
             />
         </>
     );

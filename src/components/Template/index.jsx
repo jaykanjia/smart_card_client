@@ -46,7 +46,7 @@ const Template = ({ data }) => {
                             return (
                                 <Link
                                     key={item.link}
-                                    href={`//${item.link}`}
+                                    href={`${item.link}`}
                                     target="_blank"
                                 >
                                     <div className="p-3 inline-block bg-light-300 dark:bg-dark-500 rounded-[20px]">

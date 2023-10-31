@@ -1,9 +1,7 @@
 'use client';
-import React from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 
-const Login = ({ onSubmit, emailRef, passwordRef }) => {
+const Login = ({ onSubmit, emailRef, passwordRef, isPending }) => {
     return (
         <>
             <div className="flex flex-col gap-8">
@@ -46,7 +44,9 @@ const Login = ({ onSubmit, emailRef, passwordRef }) => {
                 <button
                     className={`bg-primary bg-opacity-80 text-white w-full rounded-md px-4 py-2 hover:bg-opacity-100`}
                     onClick={(e) => onSubmit(e)}
+                    disabled={!!isPending}
                 >
+                    {isPending ? <span>#</span> : null}
                     Login
                 </button>
 

@@ -4,7 +4,7 @@ import styles from './createcard.module.css';
 import clsx from 'clsx';
 import { useRouter } from 'next/navigation';
 
-const CreateCard = ({ submitFunction, data }) => {
+const UpdateCard = ({ submitFunction, data }) => {
     const router = useRouter();
 
     const nameRef = useRef();
@@ -24,35 +24,62 @@ const CreateCard = ({ submitFunction, data }) => {
 
     const handleOnSubmit = (e) => {
         e.preventDefault();
+        const data = {
+            data: {
+                name: nameRef.current.value,
+                designation: designationRef.current.value,
+                about: aboutRef.current.value,
+                socialLinks: [
+                    { title: 'youtube', link: youtubeRef.current.value },
+                    { title: 'linkedin', link: linkedinRef.current.value },
+                    {
+                        title: 'instagram',
+                        link: instagramRef.current.value,
+                    },
+                    { title: 'whatsapp', link: whatsappRef.current.value },
+                    { title: 'facebook', link: facebookRef.current.value },
+                    { title: 'skype', link: skypeRef.current.value },
+                    { title: 'twitter', link: twitterRef.current.value },
+                ],
+                contactDetails: {
+                    phoneNumber: contactNumebrRef.current.value,
+                    email: emailRef.current.value,
+                    address: addressRef.current.value,
+                    website: websiteRef.current.value,
+                },
+            },
+        };
         submitFunction(data);
     };
 
     useEffect(() => {
         if (data) {
-            nameRef.current.value = data.name;
-            designationRef.current.value = data.designation;
-            aboutRef.current.value = data.about;
-            contactNumebrRef.current.value = data.contactDetails.phoneNumebr;
-            emailRef.current.value = data.contactDetails.email;
-            websiteRef.current.value = data.contactDetails.website;
-            addressRef.current.value = data.contactDetails.address;
-            youtubeRef.current.value = data.socialLinks[0];
-            linkedinRef.current.value = data.socialLinks[1];
-            instagramRef.current.value = data.socialLinks[2];
-            whatsappRef.current.value = data.socialLinks[3];
-            facebookRef.current.value = data.socialLinks[4];
-            skypeRef.current.value = data.socialLinks[5];
-            twitterRef.current.value = data.socialLinks[6];
+            nameRef.current.value = data?.name;
+            designationRef.current.value = data?.designation;
+            aboutRef.current.value = data?.about;
+            if (data.contactDetails) {
+                contactNumebrRef.current.value =
+                    data?.contactDetails?.phoneNumber;
+                emailRef.current.value = data?.contactDetails?.email;
+                websiteRef.current.value = data?.contactDetails?.website;
+                addressRef.current.value = data?.contactDetails?.address;
+            }
+            if (data.socialLinks) {
+                youtubeRef.current.value = data?.socialLinks[0].link;
+                linkedinRef.current.value = data?.socialLinks[1].link;
+                instagramRef.current.value = data?.socialLinks[2].link;
+                whatsappRef.current.value = data?.socialLinks[3].link;
+                facebookRef.current.value = data?.socialLinks[4].link;
+                skypeRef.current.value = data?.socialLinks[5].link;
+                twitterRef.current.value = data?.socialLinks[6].link;
+            }
         }
     }, []);
 
     return (
         <form onSubmit={handleOnSubmit}>
-            <div className={`flex justify-center text-gray-500 font-semibold`}>
-                WELCOME !
-            </div>
             <div className={`text-2xl font-semibold flex justify-center py-4`}>
-                Create Your Profile
+                Update Your Profile
             </div>
             <div className="grid md:grid-cols-2 gap-8 items-center w-full">
                 <div className={styles.inputContainer}>
@@ -106,26 +133,13 @@ const CreateCard = ({ submitFunction, data }) => {
                         title="Please enter a valid email address"
                     />
                 </div>
-                <div className={styles.inputContainer}>
-                    <span className={clsx([styles.details, styles.required])}>
-                        Website Link
-                    </span>
-                    <input
-                        ref={websiteRef}
-                        className={styles.inputbox}
-                        type="url"
-                        placeholder="Enter your website"
-                        required
-                        title="Please enter your website link"
-                    />
-                </div>
-                <div className={styles.inputContainer}>
+                <div className={`md:col-span-2`}>
                     <span className={clsx([styles.details, styles.required])}>
                         Address
                     </span>
                     <textarea
                         ref={addressRef}
-                        className={styles.inputbox}
+                        className={styles.textbox}
                         type="text"
                         required
                         style={{
@@ -139,13 +153,13 @@ const CreateCard = ({ submitFunction, data }) => {
                         }}
                     />
                 </div>
-                <div className={`styles.inputContainer md:col-span-2`}>
+                <div className={`md:col-span-2`}>
                     <span className={clsx([styles.details, styles.required])}>
                         About
                     </span>
                     <textarea
                         ref={aboutRef}
-                        className={styles.inputbox}
+                        className={styles.textbox}
                         type="about"
                         required
                         style={{
@@ -159,7 +173,19 @@ const CreateCard = ({ submitFunction, data }) => {
                         }}
                     />
                 </div>
-
+                <div className={styles.inputContainer}>
+                    <span className={clsx([styles.details, styles.required])}>
+                        Website Link
+                    </span>
+                    <input
+                        ref={websiteRef}
+                        className={styles.inputbox}
+                        type="url"
+                        placeholder="Enter your website"
+                        required
+                        title="Please enter your website link"
+                    />
+                </div>
                 <div className={styles.inputContainer}>
                     <span className={styles.details}>YouTube</span>
                     <input
@@ -231,21 +257,6 @@ const CreateCard = ({ submitFunction, data }) => {
                     />
                 </div>
             </div>
-
-            {/* <div className="flex justify-evenly">
-                        <div className={styles.inputContainer}>
-                            <span className={styles.details}>
-                                Profile Image
-                            </span>
-                            <ImagePicker />
-                        </div>
-                        <div className={styles.inputContainer}>
-                            <span className={styles.details}>Banner Image</span>
-                            <ImagePicker />
-                        </div>
-                    </div> */}
-
-            {/*buttons */}
             <div className="m-[30px_0px] flex gap-3">
                 <button
                     className={`bg-red-500 text-white w-full hover:bg-red-400 hover:bg-opacity-70 rounded-md p-2`}
@@ -264,4 +275,4 @@ const CreateCard = ({ submitFunction, data }) => {
     );
 };
 
-export default CreateCard;
+export default UpdateCard;
