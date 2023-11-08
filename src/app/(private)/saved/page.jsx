@@ -7,13 +7,16 @@ import { toast } from 'react-toastify';
 import clsx from 'clsx';
 import styles from './styles.module.css';
 import SearchIcon from '@/public/icons/search.svg';
+import Loading from '@/components/Loading';
 
 const Page = () => {
     const [profiles, setProfiles] = useState([]);
     const [searchInput, setSearchInput] = useState('');
     const [filteredProfiles, setFilteredProfiles] = useState([]);
+    const [loading, setLoading] = useState(false);
 
     const fetchData = async () => {
+        setLoading(true);
         try {
             const response = await AxiosInstance.get('/cards', {
                 headers: {
@@ -29,6 +32,8 @@ const Page = () => {
             setProfiles(data);
         } catch (error) {
             toast.error(error?.response?.data?.error);
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -57,6 +62,11 @@ const Page = () => {
         setFilteredProfiles(filteredData);
     };
 
+    const clearSearch = () => {
+        setSearchInput('');
+        setFilteredProfiles(profiles);
+    };
+
     const handleInputChange = (e) => {
         setSearchInput(e.target.value);
         handleSearch();
@@ -64,8 +74,14 @@ const Page = () => {
 
     useEffect(() => {
         fetchData();
+    }, []);
+    useEffect(() => {
         handleSearch();
     }, [profiles]);
+
+    if (loading) {
+        return <Loading />;
+    }
 
     return (
         <div className="max-w-screen-xl mx-auto min-h-screen bg-light-500 dark:bg-dark-700 py-4">
@@ -81,11 +97,17 @@ const Page = () => {
                     onChange={handleInputChange}
                     className="border border-gray-300 rounded-r p-2 w-full text-black"
                 />
+                <button
+                    className={`ml-8 bg-red-500 text-white px-4 py-2 h-full hover:bg-red-400 hover:bg-opacity-70 rounded-md `}
+                    type="button"
+                    onClick={clearSearch}
+                >
+                    Clear
+                </button>
             </div>
             <div
                 className={clsx([
-                    'p-8 md:px-20 flex flex-col sm:grid items-center justify-center',
-                    styles.gridContainer,
+                    'p-8 md:px-20 flex flex-col sm:grid lg:grid-cols-2 gap-4 items-center justify-center',
                 ])}
             >
                 {filteredProfiles.map((item) => {
