@@ -6,6 +6,7 @@ import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import clsx from 'clsx';
 import styles from './styles.module.css';
+import SearchIcon from '@/public/icons/search.svg';
 
 const Page = () => {
     const [profiles, setProfiles] = useState([]);
@@ -67,20 +68,23 @@ const Page = () => {
     }, [profiles]);
 
     return (
-        <div className="max-w-screen-xl mx-auto bg-light-500 dark:bg-dark-700 py-4">
+        <div className="max-w-screen-xl mx-auto min-h-screen bg-light-500 dark:bg-dark-700 py-4">
             <Header2 />
-            <div className="mt-8 ml-20 max-w-sm">
+            <div className="max-w-screen-sm p-8 mx-auto flex items-center">
+                <span className="border p-2 bg-white text-black">
+                    <SearchIcon className="w-6 h-6" />
+                </span>
                 <input
                     type="text"
                     placeholder="Search by name, phone, email, or designation"
                     value={searchInput}
                     onChange={handleInputChange}
-                    className="border border-gray-300 rounded p-2 w-full text-black"
+                    className="border border-gray-300 rounded-r p-2 w-full text-black"
                 />
             </div>
             <div
                 className={clsx([
-                    'min-h-screen p-8 md:px-20 flex flex-col sm:grid items-center justify-center',
+                    'p-8 md:px-20 flex flex-col sm:grid items-center justify-center',
                     styles.gridContainer,
                 ])}
             >
