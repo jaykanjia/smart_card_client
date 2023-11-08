@@ -74,10 +74,9 @@ const page = () => {
                             onClick={handleQrContainer}
                         ></div>
                         <div>
-                            {/* TODO: change url to dynamic */}
                             {userData && (
                                 <QRCodeGenerator
-                                    data={`${url.CLIENT_URL}/profile/${userData?.userId}`}
+                                    data={`${process.env.NEXT_PUBLIC_CLIENT_URL}/profile/${userData?.userId}`}
                                 />
                             )}
                         </div>
