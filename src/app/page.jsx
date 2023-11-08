@@ -72,11 +72,23 @@ export default function Home() {
                             href={item.url}
                             className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
                         >
-                            <h2 className="mb-3 text-2xl font-semibold capitalize flex gap-2 justify-center md:justify-start">
+                            <h2 className="mb-3 text-2xl font-semibold capitalize flex gap-2 items-center justify-center md:justify-start">
                                 <span>{item.title}</span>
-                                <span className='className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none'>
-                                    <span>-</span>
-                                    <span>&gt;</span>
+                                <span className="transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        strokeWidth={2}
+                                        stroke="currentColor"
+                                        className="w-6 h-6"
+                                    >
+                                        <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+                                        />
+                                    </svg>
                                 </span>
                             </h2>
                             <p className="m-0 max-w-[30ch] text-sm opacity-50 capitalize">

@@ -249,6 +249,7 @@ const CreateCard = ({ submitFunction, data }) => {
             <div className="m-[30px_0px] flex gap-3">
                 <button
                     className={`bg-red-500 text-white w-full hover:bg-red-400 hover:bg-opacity-70 rounded-md p-2`}
+                    type="button"
                     onClick={() => router.back()}
                 >
                     Cancel

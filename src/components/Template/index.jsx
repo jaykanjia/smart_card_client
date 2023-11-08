@@ -28,7 +28,7 @@ const Template = ({ data }) => {
             </div>
             <div className="flex flex-col gap-8 mt-10 sm:mt-16">
                 <div className="flex flex-col sm:items-start items-center">
-                    <p className="font-medium text-[24px]">{data?.name}</p>
+                    <p className="font-medium text-[24px] mb-4">{data?.name}</p>
                     <p className="text-sm font-light italic">
                         {data?.designation}
                     </p>
