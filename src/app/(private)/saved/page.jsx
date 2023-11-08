@@ -6,7 +6,6 @@ import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import clsx from 'clsx';
 import styles from './styles.module.css';
-import { data } from 'autoprefixer';
 
 const Page = () => {
     const [profiles, setProfiles] = useState([]);
