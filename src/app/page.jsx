@@ -11,7 +11,7 @@ const links = [
     },
     {
         title: 'why?',
-        url: '/features',
+        url: '/about',
         description:
             "why to use our service?, what we provide and it's features",
     },

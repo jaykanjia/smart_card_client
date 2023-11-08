@@ -3,10 +3,12 @@ import AxiosInstance from '@/AxiosInstance';
 import { toast } from 'react-toastify';
 import { useEffect, useState } from 'react';
 import UpdateCard from '@/components/UpdateCard';
+import Loading from '@/components/Loading';
 
 const page = () => {
     const [userData, setUserData] = useState({});
     const [loading, setLoading] = useState(true);
+    const [isPending, setIsPending] = useState(false);
 
     const fetchData = async () => {
         setLoading(true);
@@ -32,6 +34,7 @@ const page = () => {
     }, []);
 
     const submitFunction = async (data) => {
+        setIsPending(true);
         try {
             const response = await AxiosInstance.put('/profile', data, {
                 headers: {
@@ -41,14 +44,22 @@ const page = () => {
             toast.success(response?.data?.message);
         } catch (error) {
             toast.error(error?.response?.data?.error);
+        } finally {
+            setIsPending(false);
         }
     };
 
     if (loading) {
-        return <h1>Loading...</h1>;
+        return <Loading />;
     }
 
-    return <UpdateCard submitFunction={submitFunction} data={userData} />;
+    return (
+        <UpdateCard
+            submitFunction={submitFunction}
+            data={userData}
+            isPending={isPending}
+        />
+    );
 };
 
 export default page;

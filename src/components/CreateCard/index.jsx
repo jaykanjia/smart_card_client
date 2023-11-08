@@ -4,7 +4,7 @@ import styles from './createcard.module.css';
 import clsx from 'clsx';
 import { useRouter } from 'next/navigation';
 
-const CreateCard = ({ submitFunction, data }) => {
+const CreateCard = ({ submitFunction, data, isPending }) => {
     const router = useRouter();
 
     const nameRef = useRef();
@@ -255,10 +255,14 @@ const CreateCard = ({ submitFunction, data }) => {
                     Cancel
                 </button>
                 <button
-                    className={`bg-primary text-white w-full hover:bg-primary hover:bg-opacity-70 rounded-md p-2`}
+                    className={`bg-primary text-white w-full hover:bg-primary hover:bg-opacity-70 rounded-md p-2 flex items-center justify-center gap-4`}
                     type="submit"
+                    disabled={isPending}
                 >
-                    Submit
+                    {isPending ? (
+                        <span className="block w-6 aspect-square rounded-full border-4 border-black dark:border-white border-t-transparent dark:border-t-transparent animate-spin"></span>
+                    ) : null}
+                    <span>Submit</span>
                 </button>
             </div>
         </form>

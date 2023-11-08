@@ -42,12 +42,14 @@ const Login = ({ onSubmit, emailRef, passwordRef, isPending }) => {
                 </div>
 
                 <button
-                    className={`bg-primary bg-opacity-80 text-white w-full rounded-md px-4 py-2 hover:bg-opacity-100`}
+                    className={`bg-primary bg-opacity-80 text-white w-full rounded-md px-4 py-2 hover:bg-opacity-100 flex items-center gap-4 justify-center`}
                     onClick={(e) => onSubmit(e)}
                     disabled={!!isPending}
                 >
-                    {isPending ? <span>#</span> : null}
-                    Login
+                    {isPending ? (
+                        <span className="block w-6 aspect-square rounded-full border-4 border-black dark:border-white border-t-transparent dark:border-t-transparent animate-spin"></span>
+                    ) : null}
+                    <span>Login</span>
                 </button>
 
                 <div className="flex gap-2">

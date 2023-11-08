@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import { toast } from 'react-toastify';
 import Login from '@/components/Login';
 import CancelBtn from '@/components/CancelBtn';
+import Loading from '@/components/Loading';
 
 const page = ({ params }) => {
     const router = useRouter();
@@ -66,12 +67,13 @@ const page = ({ params }) => {
         } catch (error) {
             toast.alert(error?.response?.data?.error);
             router.push('/404');
+        } finally {
+            setLoading(false);
         }
-        setLoading(false);
     }, []);
 
     if (loading) {
-        return <div>LOADING...</div>;
+        return <Loading />;
     }
 
     if (showLoginForm) {

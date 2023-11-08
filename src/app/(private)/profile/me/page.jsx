@@ -40,6 +40,7 @@ const page = () => {
     };
 
     const fetchData = async () => {
+        setLoading(true);
         try {
             const response = await AxiosInstance.get('/profile', {
                 headers: {
@@ -50,13 +51,13 @@ const page = () => {
         } catch (error) {
             toast.error(error?.response?.data?.error);
             router.back();
+        } finally {
+            setLoading(false);
         }
     };
 
     useEffect(() => {
-        setLoading(true);
         fetchData();
-        setLoading(false);
         return () => {};
     }, []);
 

@@ -1,5 +1,4 @@
 import React from 'react';
-import Loading from '@/components/Loading';
 import ImageContentSection from '@/components/IamgeContent';
 import Header2 from '@/components/Header2';
 
