@@ -40,7 +40,6 @@ const page = ({ params }) => {
                     'auth-token': localStorage.getItem('AUTH_TOKEN'),
                 },
             });
-            console.log(response);
             toast.success(response?.data?.message);
         } catch (error) {
             toast.error(error?.response?.data?.error);
@@ -65,7 +64,6 @@ const page = ({ params }) => {
             const response = await AxiosInstance.get(`/profile/${params.id}`);
             setUserData(response.data.data);
         } catch (error) {
-            console.log(error);
             toast.alert(error?.response?.data?.error);
             router.push('/404');
         }

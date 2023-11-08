@@ -4,8 +4,6 @@ import Card from '@/components/Card';
 import Header2 from '@/components/Header2';
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
-import FloatingBtn from '@/components/FloatingBtn';
-import BackBtn from '@/components/BackBtn';
 import clsx from 'clsx';
 import styles from './styles.module.css';
 
@@ -40,7 +38,7 @@ const page = () => {
             <Header2 />
             <div
                 className={clsx([
-                    'min-h-screen p-8 md:px-20',
+                    'min-h-screen p-8 md:px-20 flex flex-col sm:grid items-center justify-center',
                     styles.gridContainer,
                 ])}
             >

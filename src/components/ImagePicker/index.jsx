@@ -1,9 +1,6 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
-import AddIcon from '@/public/icons/plus.svg';
-import CrossIcon from '@/public/icons/cross.svg';
-import style from './style.module.css';
 
 const ImagePicker = () => {
     const [file, setFile] = useState(null);
